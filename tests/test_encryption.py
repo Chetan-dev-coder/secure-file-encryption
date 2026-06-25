@@ -127,13 +127,13 @@ class TestHMACIntegrity:
 class TestPasswordSecurity:
     def test_password_hashing(self):
         from app.auth.middleware import hash_password, verify_password
-        hashed = hash_password("SecureP1!")
-        assert verify_password("SecureP1!", hashed) is True
+        hashed = hash_password("Ab1!")
+        assert verify_password("Ab1!", hashed) is True
 
     def test_wrong_password_rejected(self):
         from app.auth.middleware import hash_password, verify_password
-        hashed = hash_password("SecureP1!")
-        assert verify_password("WrongP1!", hashed) is False
+        hashed = hash_password("Ab1!")
+        assert verify_password("Cd2!", hashed) is False
 
     def test_weak_password_rejected(self):
         from app.models.schemas import UserRegister
@@ -181,3 +181,4 @@ class TestBlobStorage:
         n1 = generate_blob_name(1, "file.pdf")
         n2 = generate_blob_name(1, "file.pdf")
         assert n1 != n2
+
